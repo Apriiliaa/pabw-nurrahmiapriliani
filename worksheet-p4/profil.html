@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Daftar Komik Favorit Saya</title>
+</head>
+
+<body>
+  <header>
+    <h1>Daftar Komik Favorit Saya</h1>
+    <nav aria-label="Navigasi Utama">
+          <ul>
+               <li><a href="#koleksi">Koleksi Komik</a></li>
+               <li><a href="#tambah">Tambah Komik</a></li>
+               <li><a href="#tentang-saya">Tentang Saya</a></li>
+          </ul>
+     </nav>
+   </header>
+
+   <main>
+     <section id="koleksi">
+          <h2>Koleksi Komik Favorit</h2>
+          <table border="1">
+            <caption>Daftar Koleksi Komik Saya</caption>
+            <thead>
+              <tr>
+                <th scope="col">Judul</th>
+                <th scope="col">Pengarang</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Status</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">I Wanna Be U</th>
+                <td>Sam</td>
+                <td>Fantasi, Pengkhianatan, Pertukaran Darah</td>
+                <td>Ongoing</td>
+              </tr>
+
+              <tr>
+                <th scope="row">Rumor Has It</th>
+                <td>Noey</td>
+                <td>Romantis, Perundungan, Keluarga</td>
+                <td>Tamat</td>
+              </tr>
+
+              <tr>
+                <th scope="row">From Dreams to Freedom</th>
+                <td>2L</td>
+                <td>Romantis, Perundungan, Keluarga</td>
+                <td>Tamat</td>
+              </tr> 
+            </tbody>
+          </table>
+
+          <figure>
+               <img src="komik1.jpeg"
+                    alt="Sampul komik I Wanna Be U dengan gambar tokoh Ratu berambut ungu yang misterius dengan simbol bidak catur, bertema fantasi kerajaan penuh intrik."
+                    width="250" height="250" loading="lazy">
+               <figcaption>Gambar 1. I Wanna Be U</figcaption>
+          </figure>
+
+          <figure>
+               <img src="komik2.jpeg"
+                    alt="Sampul komik Rumor Has It dengan gambar cewek rambut merah yang lagi panik dan digoda sama cowok rambut hitam yang santai, bertema romansa penuh gosip."
+                    width="250" height="250" loading="lazy">
+               <figcaption>Gambar 2. Rumor Has It</figcaption>
+          </figure>
+
+          <figure>
+               <img src="komik3.jpeg"
+                    alt="Sampul komik From Dreams to Freedom dengan gambar cewek dan cowok yang kontras penampilannya dengan latar kota malam berwarna ungu, bertema perjuangan dan kebebasan."
+                    width="250" height="250" loading="lazy">
+               <figcaption>Gambar 3. From Dreams to Freedom</figcaption>
+          </figure>
+     </section>
+
+     <section id="tambah">
+          <h2>Tambah Komik Favorit</h2>
+
+          <form action="/simpan" method="post">
+               <p>
+                    <label for="judul">Judul Komik:</label>
+                    <input type="text" id="judul" name="judul" required>
+               </p>
+               <p>
+
+                    <label for="pengarang">Pengarang:</label>
+                    <input type="text" id="pengarang" name="pengarang" required>
+               </p>
+               <p>
+
+                    <label for="genre">Genre:</label>
+                    <input type="text" id="genre" name="genre" required>
+               </p>
+               <p>
+
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" required>
+                         <option value="">Pilih Status</option>
+                         <option value="Ongoing">Ongoing</option>
+                         <option value="Hiatus">Hiatus</option>
+                         <option value="Tamat">Tamat</option>
+                    </select>
+               </p>
+
+              <button type="submit">Simpan</button>
+            </form>
+          </section>
+
+     <section id="tentang-saya">
+            <h2>Tentang Saya</h2>
+
+            <p>
+                Halaman web ini dibuat untuk mendokumentasikan berbagai komik favorit yang saya baca dan sukai. Melalui halaman ini, judul, pengarang, genre, serta status komik dapat diakses dengan mudah dan terstruktur.
+            </p>
+     </section>
+   </main>
+
+   <footer>
+          <p>Nama: Nur Rahmi Apriliani | NIM: 25523233 | Tahun: 2026</p>
+   </footer>
+
+</body>
+</html>
