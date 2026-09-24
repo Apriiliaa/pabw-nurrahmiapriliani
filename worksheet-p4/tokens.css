@@ -32,6 +32,7 @@
   --color-primary: var(--blue-700);
   --color-danger: var(--pink-600);
   --color-focus: var(--pink-500);
+  --color-on-primary: #FFFFFF;
 
   --card-pad: var(--space-4);
   --section-gap: var(--space-6);

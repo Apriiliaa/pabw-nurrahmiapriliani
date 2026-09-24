@@ -1,0 +1,59 @@
+@media (prefers-color-scheme: dark) {   /* F.1 Tema gelap ngikutin sistem  */
+  :root {
+    --color-bg: #0F172A;        /* Latar jadi hitam pekat. */
+    --color-fg: #F8FAFC;        /* Teks jadi putih tulang. */
+    --color-surface: #1E293B;   /* Kartu jadi abu-abu gelap. */
+    --color-border: #637492;    /* Border jadi abu-abu terang. */
+    --color-primary: #60A5FA;   /* Biru muda terang biar kontras. */
+    --color-danger: #FF8ABA;    /* Pink lebih terang biar kontras. */
+    --color-focus: #FFC000;     /* Fokus jadi kuning/oranye biar mencolok. */
+    --color-on-primary: #0F172A;/* Teks tombol jadi gelap (biar kontras dgn biru terang). */
+    --shadow-1: 0 1px 3px rgba(0, 0, 0, .45); /* Bayangan lebih gelap. */
+  }
+}
+
+:root:has(#tema-pink:checked) {
+  --color-bg: #EE9BC0;        /* Latar pink sangat muda. */
+  --color-fg: #1F0A14;        /* Teks hitam kemerahan biar kontras. */
+  --color-surface: #EA81B0;   /* Kartu pink lebih muda. */
+  --color-border: #a36283;    /* Border pink medium. */
+  --color-primary: #823b5b;   /* Pink cerah jadi warna utama. */
+  --color-danger: #BE123C;    /* Pink tua buat peringatan. */
+  --color-focus: #7C3AED;     /* Ungu buat garis fokus (kontras dengan pink). */
+  --color-on-primary: #FFFFFF;
+  --shadow-1: 0 1px 3px rgba(190, 18, 60, .15);
+}
+
+.tombol-pink {                /* Styling khusus biar tombol pink warnanya beda dari tombol tema gelap. */
+  background: #DB2777;
+  color: #FFFFFF;
+  border-color: #DB2777;
+}
+
+.pengalih-tema {                /* F.2 Tombol pengalih tema manual */
+  position: absolute;           /* Angkat dari aliran normal. */
+  opacity: 0;                   /* Bikin transparan (nggak keliatan). */
+  pointer-events: none;         /* Matiin interaksi mouse. */
+}
+
+.tombol-tema {                            /* Styling buat label biar keliatan kayak tombol. */
+  cursor: pointer;                        /* Kursor jadi tangan. */
+  background: var(--color-surface);       /* Latar pakai token. */
+  color: var(--color-fg);                 /* Teks pakai token. */
+  padding: var(--space-1) var(--space-2); /* Jarak dalam tombol. */
+  border: 1px solid var(--color-border);  /* Border pakai token. */
+  border-radius: var(--radius-md);        /* Sudut membulat pakai token. */
+  font-size: var(--text-sm);              /* Ukuran teks kecil pakai token. */
+}
+
+:root:has(#tema:checked) {      /* Kalau checkbox dicentang, timpa tokennya jadi gelap. */
+  --color-bg: #0F172A;        /* Latar jadi hitam pekat. */
+  --color-fg: #E2E8F0;        /* Teks jadi putih tulang. */
+  --color-surface: #1E293B;   /* Kartu jadi abu-abu gelap. */
+  --color-border: #334155;    /* Border jadi abu-abu medium. */
+  --color-primary: #7DA9F7;   /* Biru lebih terang. */
+  --color-danger: #FF8ABA;    /* Pink lebih terang. */
+  --color-focus: #FFC000;     /* Fokus jadi kuning. */
+  --color-on-primary: #0F172A;
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, .45); /* Bayangan lebih gelap. */
+}

@@ -31,7 +31,7 @@ button {
   border: 1px solid transparent;            /* Border transparan biar ukurannya sama kayak input. */
   border-radius: var(--radius-md);          /* Sudut membulat pakai token. */
   background: var(--color-primary);         /* Warna tombol pakai token (Biru). */
-  color: var(--color-surface);              /* Warna teks tombol pakai token (Putih). */
+  color: var(--color-on-primary);          /* Warna teks tombol pakai token (Putih). */
   cursor: pointer;                          /* Kursor berubah jadi tangan. */
   align-self: flex-start;
 }
