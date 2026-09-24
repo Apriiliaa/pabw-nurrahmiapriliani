@@ -1,0 +1,59 @@
+header {
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Pembungkus isi header biar judul & menu sejajar. */
+.header-baris { 
+  display: flex;
+  align-items: center;           /* Biar teksnya rata tengah secara vertikal. */
+  justify-content: space-between;/* Judul di kiri, menu di kanan. */
+  gap: var(--space-4);           /* Jarak antar elemen. */
+  flex-wrap: wrap;               /* Kalau layar sempit, menu turun ke bawah. */
+}
+
+nav ul {
+  display: flex;
+  gap: var(--space-4);           /* Jarak antar menu. */
+  list-style: none;              /* Hapus bullet (titik) bawaan. */
+  padding: 0;
+}
+
+nav a {
+  color: var(--color-primary);   /* Warna link pakai token (Biru). */
+  text-decoration: none;         /* Hapus garis bawah bawaan link. */
+}
+
+nav a:hover { 
+  text-decoration: underline;    /* Munculin garis bawah pas di-hover. */
+}
+
+main {
+  display: flex;                 /* Aktifin mode flexbox. */
+  flex-direction: column;        /* Diusun ke bawah. */
+  gap: var(--section-gap);       /* Jarak antar bagian pakai token. */
+  padding-block: var(--space-6); /* Ruang atas & bawah pakai token. */
+}
+
+.katalog {
+  display: flex;                 
+  flex-wrap: wrap;               /* Kalau sempit, kartu turun sendiri. */
+  gap: var(--space-4);
+}
+
+.kartu {
+  flex: 1 1 16rem;                        /* Bisa tumbuh, menyusut, lebar dasar 16rem. */
+  background: var(--color-surface);       /* Latar kartu pakai token. */
+  border: 1px solid var(--color-border);  /* Garis tepi tipis pakai token. */
+  border-radius: var(--radius-md);        /* Sudut membulat pakai token. */
+  box-shadow: var(--shadow-1);            /* Bayangan halus pakai token. */
+  padding: var(--card-pad);               /* Jarak dalam kartu pakai token. */
+}
+
+footer {
+  margin-top: var(--space-6);                 /* Jarak dari atas pakai token. */
+  padding-block: var(--space-4);              /* Ruang atas & bawah footer pakai token. */
+  border-top: 1px solid var(--color-border);  /* Garis pemisah atas pakai token. */
+  color: var(--color-fg);                     /* Warna teks pakai token. */
+  font-size: var(--text-sm);                  /* Ukuran teks kecil pakai token. */
+}
