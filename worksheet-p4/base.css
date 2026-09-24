@@ -1,0 +1,33 @@
+*, *::before, *::after {
+  box-sizing: border-box; /* Biar padding & border nggak bikin elemen membengkak */
+}
+
+* {
+  margin: 0; /* Hapus margin bawaan browser, nanti aku atur sendiri pakai token */
+}
+
+img { /* Biar gambar ga keluar layar & tingginya nyesuain */
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+html {
+  font-size: 100%; /* Ikutin settingan pengguna, jangan dipatok px. */
+}
+
+body { /* Pengaturan utama seluruh halaman. */
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--text-md);   
+  line-height: 1.6;            
+  color: var(--color-fg);      
+  background: var(--color-bg); 
+  padding: var(--space-4);    
+}
+
+/* Judul pakai token biar konsisten. */
+h1 { font-size: var(--text-3xl); line-height: 1.15; }
+h2 { font-size: var(--text-xl); line-height: 1.25; }
+h3 { font-size: var(--text-md); }
+
+  main p { max-width: 60ch; } /* Batasi panjang baris biar mata ga cape baca. */
