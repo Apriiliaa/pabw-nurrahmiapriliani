@@ -1,0 +1,58 @@
+form {
+  display: flex;              /* Aktifin mode flexbox. */
+  flex-direction: column;     /* Susun kolom form ke bawah. */
+  gap: var(--space-4);        /* Jarak antar kolom form pakai token. */
+}
+
+.form-kolom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2); /* Jarak label ke isian, seragam. */
+}
+
+label {                       
+  font-size: var(--text-sm);  /* Ukuran label pakai token. */
+  font-weight: 600;           /* Teks label agak tebal. */
+}
+
+input, select, textarea { 
+  font: inherit;                          /* Ikutin ukuran huruf halaman. */
+  padding: var(--space-1) var(--space-2); /* Jarak dalam kotak isian. */
+  border: 1px solid var(--color-border);  /* Garis tepi tipis pakai token. */
+  border-radius: var(--radius-md);        /* Sudut membulat pakai token. */
+  background: var(--color-surface);       /* Latar putih bersih pakai token. */
+  color: var(--color-fg);                 /* Warna teks pakai token. */
+  max-width: 13rem; 
+}
+
+button {
+  font: inherit;                            /* Ikutin font halaman. */
+  padding: var(--space-2) var(--space-4);   /* Jarak dalam tombol. */
+  border: 1px solid transparent;            /* Border transparan biar ukurannya sama kayak input. */
+  border-radius: var(--radius-md);          /* Sudut membulat pakai token. */
+  background: var(--color-primary);         /* Warna tombol pakai token (Biru). */
+  color: var(--color-surface);              /* Warna teks tombol pakai token (Putih). */
+  cursor: pointer;                          /* Kursor berubah jadi tangan. */
+  align-self: flex-start;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);    /* Garis fokus pakai token pink. */
+  outline-offset: 2px;                      /* Kasih jarak 2px biar nggak nempel. */
+}
+
+/* Baru muncul kalau pengguna salah isi, bukan dari awal. */
+input:user-invalid {                    
+  border-color: var(--color-danger);    /* Warna border jadi pink tua. */
+  border-width: 2px;                    /* Border agak lebih tebal. */
+}
+
+.pesan-galat { 
+  display: none;                /* Sembunyikan dulu pesannya. */  
+  color: var(--color-danger);   /* Warna teks pakai token (Pink tua). */
+  font-size: var(--text-sm);    /* Ukuran teks kecil pakai token. */
+}
+
+.form-kolom:has(input:user-invalid) .pesan-galat { 
+  display: block;           /* Munculin pesan kalau inputnya salah. */    
+}
