@@ -1,6 +1,4 @@
-/* dasar: berlaku di semua lebar */
-
-body {                          /* 1. Atur tinggi halaman agar header & footer menempel */
+.body {                          /* 1. Atur tinggi halaman agar header & footer menempel */
   min-height: 100dvh;           /* dvh = dynamic viewport height, responsif terhadap bilah alamat browser HP */
   margin: 0;                    /* Tidak ada margin bawaan yang mengganggu */
 }
@@ -15,6 +13,20 @@ body {                          /* 1. Atur tinggi halaman agar header & footer m
   display: grid;
   grid-template-columns: 1fr;       
   gap: var(--space-4);              
+}
+
+img {                   /* gambar tidak melebihi wadahnya */ 
+  max-width: 100%; 
+  height: auto; 
+}
+
+.table-wrap {           /* tabel lebar dapat digulir sendiri */ 
+  overflow-x: auto; 
+}
+
+p {                     /* teks mengikuti ukuran huruf pengguna */ 
+  font-size: 1rem; 
+  line-height: 1.6; 
 }
 
 @media (min-width: 48rem) {                         /* tablet: galeri dua kolom */
