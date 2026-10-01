@@ -1,0 +1,18 @@
+/* dasar: berlaku di semua lebar */
+
+body {                          /* 1. Atur tinggi halaman agar header & footer menempel */
+  min-height: 100dvh;           /* dvh = dynamic viewport height, responsif terhadap bilah alamat browser HP */
+  margin: 0;                    /* Tidak ada margin bawaan yang mengganggu */
+}
+
+.content {                          /* Susunan satu kolom untuk konten utama */
+  display: grid;
+  grid-template-columns: 1fr;       /* 1fr artinya satu kolom penuh */
+  gap: var(--space-4);              /* Wajib pakai token, bukan angka px langsung */
+}
+
+.grid {                             /* Susunan satu kolom untuk grid (untuk kartu-kartu) */
+  display: grid;
+  grid-template-columns: 1fr;       
+  gap: var(--space-4);              
+}
