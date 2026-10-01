@@ -16,3 +16,12 @@ body {                          /* 1. Atur tinggi halaman agar header & footer m
   grid-template-columns: 1fr;       
   gap: var(--space-4);              
 }
+
+@media (min-width: 48rem) {                         /* tablet: galeri dua kolom */
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 60rem) {                         /* desktop: sidebar bersanding dengan konten */
+  .content { grid-template-columns: 16rem 1fr; }
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
