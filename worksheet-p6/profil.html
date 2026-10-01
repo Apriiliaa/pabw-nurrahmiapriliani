@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Daftar Komik Favorit Saya</title>
+
+     <link rel="stylesheet" href="tokens.css">
+     <link rel="stylesheet" href="base.css">
+     <link rel="stylesheet" href="layout.css">
+     <link rel="stylesheet" href="komponen.css">
+     <link rel="stylesheet" href="tema.css">
+</head>
+
+<body>
+  <div class="tombol-tema-wrapper">
+    <input type="checkbox" id="tema" class="pengalih-tema">
+    <label for="tema" class="tombol-tema">Tema gelap</label>
+    <input type="checkbox" id="tema-pink" class="pengalih-tema">
+    <label for="tema-pink" class="tombol-tema tombol-pink">Tema pink</label>
+  </div>
+     
+        <div class="navbar">
+          <h1>Daftar Komik Favorit Saya</h1>
+          <nav aria-label="Navigasi Utama">
+            <ul>
+               <li><a href="#koleksi">Koleksi Komik</a></li>
+               <li><a href="#tambah">Tambah Komik</a></li>
+               <li><a href="#tentang-saya">Tentang Saya</a></li>
+            </ul>
+         </nav>
+        </div>
+     </header>
+
+   <main class="isi">
+
+     <aside class="sidebar">
+          <h2>Menu Cepat</h2>
+          <p>Area sidebar untuk tautan cepat ke bagian-bagian penting dari halaman web ini.</p>
+     </aside>
+          
+     <section id="koleksi">
+          <h2>Koleksi Komik Favorit</h2>
+
+        <div class="tabel-wrapper">
+          <table>
+            <caption>Daftar Koleksi Komik Saya</caption>
+            <thead>
+              <tr>
+                <th scope="col">Judul</th>
+                <th scope="col">Pengarang</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Status</th>
+              </tr>
+
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">I Wanna Be U</th>
+                <td>Sam</td>
+                <td>Fantasi, Pengkhianatan, Pertukaran Tubuh</td>
+                <td>Ongoing</td>
+              </tr>
+
+              <tr>
+                <th scope="row">Rumor Has It</th>
+                <td>Noey</td>
+                <td>Romantis, Perundungan, Keluarga</td>
+                <td>Tamat</td>
+              </tr>
+
+              <tr>
+                <th scope="row">From Dreams to Freedom</th>
+                <td>2L</td>
+                <td>Romantis, Perundungan, Balas Dendam</td>
+                <td>Tamat</td>
+              </tr> 
+            </tbody>
+          </table>
+        </div> 
+     
+
+        <div class="galeri">
+        <article class="kartu">
+          <img src="komik1.jpeg" alt="..." loading="lazy">
+          <div class="kartu__kaki">
+            <figcaption>I Wanna Be U</figcaption>
+            <span>Ongoing</span>
+          </div>
+          </article>
+
+        <article class="kartu">
+          <img src="komik2.jpeg" alt="..." loading="lazy">
+          <p class="kartu__deskripsi"> Medeia telah memenangkan sayembara menjadi putri mahkota, namun tiba-tiba saja Putra Mahkota laros memilih Psyche jadi calon pengantinya! Penuh amarah, Medeia bertekad merebut segalanya kembali dari Pysche. Sayang sekali, jiwa mereka malah tertukar.
+          <div class="kartu__kaki">
+            <figcaption>Rumor Has It</figcaption>
+            <span>Tamat</span>
+          </div>
+        </article>
+
+          <article class="kartu">
+               <img src="komik3.jpeg" alt="..." loading="lazy">
+               <div class="kartu__kaki">
+               <figcaption>From Dreams to Freedom</figcaption>
+               <span>Tamat</span>
+          </div>
+        </article>
+      </div>
+     </section>
+
+     <section id="tambah">
+          <h2>Tambah Komik Favorit</h2>
+
+          <form action="/simpan" method="post">
+               <div class="form-kolom">
+                    <label for="judul">Judul Komik:</label>
+                    <input type="text" id="judul" name="judul" required>
+                    <small class="pesan-galat">Judul komik wajib diisi.</small>
+               </div>
+
+               <div class="form-kolom">
+                    <label for="pengarang">Pengarang:</label>
+                    <input type="text" id="pengarang" name="pengarang" required>
+                    <small class="pesan-galat">Pengarang komik wajib diisi.</small>
+               </div>
+
+               <div class="form-kolom">
+                    <label for="genre">Genre:</label>
+                    <input type="text" id="genre" name="genre" required>
+                    <small class="pesan-galat">Genre komik wajib diisi.</small>
+               </div>
+
+               <div class="form-kolom">
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" required>
+                         <option value="">Pilih Status</option>
+                         <option value="Ongoing">Ongoing</option>
+                         <option value="Hiatus">Hiatus</option>
+                         <option value="Tamat">Tamat</option>
+                    </select>
+                    <small class="pesan-galat">Status komik wajib diisi.</small>
+               </div>
+              <button type="submit">Simpan</button>
+            </form>
+          </section>
+
+     <section id="tentang-saya">
+            <h2>Tentang Saya</h2>
+            <p>Hai, saya Aprilia. Saya suka membaca komik terutama komik bergenre fantasi, thriller, aksi, kerajaan, komedi, dan romansa. Halaman web ini dibuat untuk mendokumentasikan berbagai komik favorit yang saya baca. Melalui halaman ini, judul, pengarang, genre, serta status komik dapat diakses dengan mudah dan terstruktur.
+            </p>
+     </section>
+     </div>
+   </main>
+
+   <footer>
+          <p>Nama: Nur Rahmi Apriliani | NIM: 25523233 | Tahun: 2026</p>
+   </footer>
+   </div>
+
+</body>
+</html>
