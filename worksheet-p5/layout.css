@@ -36,8 +36,8 @@ nav a:hover {
 }
 
 .isi {
-  display: grid;                        /* Aktifin mode flexbox. */
-  grid-template-columns: 16rem 1fr;     /* Diusun ke bawah. */
+  display: grid;                        /* Aktifin mode grid. */
+  grid-template-columns: 16rem 1fr;     /* Sidebar 16rem, konten sisanya. */
   grid-template-areas:
     "sisi utama"
     "sisi tambah"
@@ -53,10 +53,13 @@ nav a:hover {
 #tambah        { grid-area: tambah; }
 #tentang-saya  { grid-area: tentang; }
 
-.konten-utama {                           /* Susun section ke bawah dengan jarak. */
-  display: flex;                          /* Aktifin mode flexbox. */
-  flex-direction: column;                 /* Susun ke bawah. */
-  gap: var(--space-6);                    /* Jarak antar section. */
+#koleksi,
+#tambah,
+#tentang-saya {
+  display: flex;                       /* Aktifin mode flexbox. */ 
+  flex-direction: column;              /* Susun kolom ke bawah. */
+  gap: var(--space-4);                 /* Jarak antar kolom pakai token. */ 
+  min-width: 0;                        /* Biar kolom bisa mengecil di layar sempit. */                             
 }
 
 @media (max-width: 768px) {           /* Kalau layar ≤ 768px, sidebar & konten jadi 1 kolom (tumpuk). */
@@ -75,4 +78,10 @@ footer {
   border-top: 1px solid var(--color-border);  /* Garis pemisah atas pakai token. */
   color: var(--color-fg);                     /* Warna teks pakai token. */
   font-size: var(--text-sm);                  /* Ukuran teks kecil pakai token. */
+  text-align: center;                         /* Teks rata tengah. */
+  opacity: 0.70;                              /* Biar nggak terlalu mencolok. */
+}
+
+footer p {
+  margin: 0;                                   /* Hapus jarak default paragraf. */
 }

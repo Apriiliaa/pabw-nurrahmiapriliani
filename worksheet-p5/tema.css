@@ -1,3 +1,11 @@
+* {
+  transition: 
+    background-color 0.25s ease-out,
+    color 0.15s ease-out,
+    border-color 0.25s ease-out;
+}
+
+
 @media (prefers-color-scheme: dark) {   /* F.1 Tema gelap ngikutin sistem  */
   :root {
     --color-bg: #0F172A;        /* Latar jadi hitam pekat. */
@@ -44,6 +52,13 @@
   border: 1px solid var(--color-border);  /* Border pakai token. */
   border-radius: var(--radius-md);        /* Sudut membulat pakai token. */
   font-size: var(--text-sm);              /* Ukuran teks kecil pakai token. */
+  margin-bottom: var(--space-8);          /* Jarak di bawah tombol pakai token. */
+}
+
+.tombol-tema-wrapper {                  /* Bungkus tombol biar bisa diatur posisinya. */
+  display: flex;                        /* Aktifin mode flexbox. */
+  gap: var(--space-2);                  /* Jarak antar tombol pakai token. */
+  margin-bottom: var(--space-4);          /* Jarak di bawah tombol pakai token. */
 }
 
 :root:has(#tema:checked) {      /* Kalau checkbox dicentang, timpa tokennya jadi gelap. */

@@ -1,7 +1,11 @@
+.tabel-wrapper {
+  overflow-x: auto;                  /* Biar tabel bisa digeser horizontal di layar sempit. */
+  max-width: 100%;                   /* Biar nggak melebihi lebar kolom. */
+}
+
 table {
   width: 100%;                       /* Biar tabel selebar kolom. */
   border-collapse: collapse;         /* Hapus jarak antar garis tabel. */
-  margin-block: var(--space-4);      /* Jarak atas & bawah tabel */
   background: var(--color-surface);  /* Latar tabel pakai token. */
 }
 
@@ -34,9 +38,8 @@ tbody tr:hover {
 
 .galeri {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 12rem));  /* Biar kolom galeri bisa menyesuaikan lebar layar. */
   gap: var(--space-4);
-  margin-block: var(--space-4);
 }
 
 .kartu {                                    /* Styling kartu biar rapi & konsisten. */
@@ -48,6 +51,9 @@ tbody tr:hover {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  min-height: 14rem;                          /* Biar semua kartu punya tinggi minimum sama. */
+  align-content: start;                      /* Biar konten kartu di atas, bukan di tengah. */
+  min-width: 0;                               /* Biar kartu bisa mengecil di layar sempit. */
 }
 
 .kartu img {                              /* Biar gambar kartu nggak melebihi lebar kartu. */
@@ -57,6 +63,20 @@ tbody tr:hover {
   object-fit: cover;
 }
 
+.kartu__deskripsi {
+  font-size: var(--text-sm);        /* Ukuran kecil, sama kayak kaki kartu */
+  color: var(--color-fg);           /* Warna teks utama */
+  opacity: 0.85;                    /* Biar nggak terlalu mencolok. */
+  line-height: 1.4;                 /* Biar jarak antar baris nggak terlalu jauh. */
+  margin: 0;                        /* Hapus jarak default paragraf. */
+  overflow-wrap:anywhere;           /* Biar teks panjang nggak keluar dari kartu. */
+  display: -webkit-box;             /* Biar teks nggak terlalu panjang, maksimal 3 baris. */
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}                 
+
 .kartu__kaki {
   display: flex;
   align-items: center;              /* Rata tengah vertikal. */
@@ -64,10 +84,13 @@ tbody tr:hover {
   gap: var(--space-2);              /* Jarak antar item di kaki kartu. */
   font-size: var(--text-sm);
   color: var(--color-fg);
+  min-width: 0;                     /* Biar teks bisa mengecil di layar sempit. */
 }
 
 .kartu__kaki figcaption {
   font-weight: 600;
+  overflow-wrap:anywhere;  /* Biar teks panjang nggak keluar dari kartu. */
+  min-width: 0;             /* Biar teks bisa mengecil di layar sempit. */
 }
 
 form {

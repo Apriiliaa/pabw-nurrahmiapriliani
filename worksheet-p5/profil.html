@@ -13,12 +13,12 @@
 </head>
 
 <body>
-   <div class="page">
-     <header>
-        <input type="checkbox" id="tema" class="pengalih-tema">
-        <label for="tema" class="tombol-tema">Tema gelap</label>
-        <input type="checkbox" id="tema-pink" class="pengalih-tema">
-        <label for="tema-pink" class="tombol-tema tombol-pink">Tema pink</label>
+  <div class="tombol-tema-wrapper">
+    <input type="checkbox" id="tema" class="pengalih-tema">
+    <label for="tema" class="tombol-tema">Tema gelap</label>
+    <input type="checkbox" id="tema-pink" class="pengalih-tema">
+    <label for="tema-pink" class="tombol-tema tombol-pink">Tema pink</label>
+  </div>
      
         <div class="navbar">
           <h1>Daftar Komik Favorit Saya</h1>
@@ -42,6 +42,7 @@
      <section id="koleksi">
           <h2>Koleksi Komik Favorit</h2>
 
+        <div class="tabel-wrapper">
           <table>
             <caption>Daftar Koleksi Komik Saya</caption>
             <thead>
@@ -57,7 +58,7 @@
               <tr>
                 <th scope="row">I Wanna Be U</th>
                 <td>Sam</td>
-                <td>Fantasi, Pengkhianatan, Pertukaran Darah</td>
+                <td>Fantasi, Pengkhianatan, Pertukaran Tubuh</td>
                 <td>Ongoing</td>
               </tr>
 
@@ -71,26 +72,28 @@
               <tr>
                 <th scope="row">From Dreams to Freedom</th>
                 <td>2L</td>
-                <td>Romantis, Perundungan, Keluarga</td>
+                <td>Romantis, Perundungan, Balas Dendam</td>
                 <td>Tamat</td>
               </tr> 
             </tbody>
           </table>
-     </section>
+        </div> 
+     
 
-     <div class="galeri">
+        <div class="galeri">
         <article class="kartu">
           <img src="komik1.jpeg" alt="..." loading="lazy">
           <div class="kartu__kaki">
-            <figcaption>Gambar 1. I Wanna Be U</figcaption>
+            <figcaption>I Wanna Be U</figcaption>
             <span>Ongoing</span>
           </div>
           </article>
 
         <article class="kartu">
           <img src="komik2.jpeg" alt="..." loading="lazy">
+          <p class="kartu__deskripsi"> Medeia telah memenangkan sayembara menjadi putri mahkota, namun tiba-tiba saja Putra Mahkota laros memilih Psyche jadi calon pengantinya! Penuh amarah, Medeia bertekad merebut segalanya kembali dari Pysche. Sayang sekali, jiwa mereka malah tertukar.
           <div class="kartu__kaki">
-            <figcaption>Gambar 2. Rumor Has It</figcaption>
+            <figcaption>Rumor Has It</figcaption>
             <span>Tamat</span>
           </div>
         </article>
@@ -98,11 +101,11 @@
           <article class="kartu">
                <img src="komik3.jpeg" alt="..." loading="lazy">
                <div class="kartu__kaki">
-               <figcaption>Gambar 3. From Dreams to Freedom</figcaption>
+               <figcaption>From Dreams to Freedom</figcaption>
                <span>Tamat</span>
           </div>
         </article>
-     </div>
+      </div>
      </section>
 
      <section id="tambah">
