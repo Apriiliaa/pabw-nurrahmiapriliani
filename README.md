@@ -3,7 +3,6 @@
 Repo ini memuat pekerjaan mata kuliah Pengembangan Aplikasi Berbasis Web, satu folder untuk setiap pertemuan.
 
 ## Pertemuan 3 — Halaman profil saya
-
 Topik halaman saya: Daftar Komik Favorit Saya
 
 - Judul halaman: Daftar Komik Favorit Saya
@@ -15,11 +14,10 @@ Topik halaman saya: Daftar Komik Favorit Saya
 - Gambar: komik1.jpeg, komik2jpeg, komik3.jpeg
 
 ## Catatan penggunaan AI
-
 Bagian struktur HTML, penyesuaian tabel, dan penyusunan form dibantu oleh AI. Saya sendiri yang mengerjakan bagian pemilihan topik, pengisian data komik, dan memastikan tampilannya sesuai dengan tugas.
 
-## Pertemuan 4 — Design token halaman profil
 
+## Pertemuan 4 — Design token halaman profil
 - Berkas gaya yang akan dibuat: tokens.css, base.css, layout.css, komponen.css, tema.css
 - Warna utama: #1D4ED8 (Biru), dipilih karena memberikan kesan profesional, modern, dan memiliki kontras yang sangat baik untuk aksesibilitas.
 
@@ -48,3 +46,16 @@ Bagian struktur HTML, penyesuaian tabel, dan penyusunan form dibantu oleh AI. Sa
 | --text-3xl | 2.25rem | judul halaman |
 
 Kriteria selesai saya: mengubah --color-primary di satu baris harus mengubah warna tombol, tautan, judul, dan garis fokus.
+
+## Pertemuan 8 — JavaScript Modern ES6+, Struktur Data, dan Array Methods
+Pada pertemuan ini, halaman profil yang sebelumnya statis mulai dihubungkan dengan file JavaScript (`app.js`) dan data dipindahkan dari HTML menjadi variabel.
+
+## Catatan penggunaan AI
+Saya mengerjakan sendiri sebagian besar logika dan penulisan kode di `app.js`, mulai dari pembuatan variabel `profil`, array `daftarKomik`, hingga pemanggilan fungsi di Console. Pemilihan data komik dan penyesuaian tema halaman juga saya lakukan sendiri.
+
+AI saya gunakan sebagai pendamping belajar untuk:
+1. Memahami pesan galat (error) di Console, seperti `ReferenceError` dan `Cannot read properties of null`, serta cara memperbaikinya.
+2. Memastikan penulisan sintaks yang benar, seperti penempatan tanda koma pada objek, penggunaan `const` dan `let`, serta penulisan arrow function dan template literal.
+3. Memahami cara kerja array methods (`filter`, `find`, `map`) dan kapan harus menggunakannya.
+
+Saya mengetik ulang dan memverifikasi setiap baris kode yang disarankan AI agar saya benar-benar memahami cara kerjanya.
