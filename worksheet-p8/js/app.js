@@ -4,11 +4,12 @@ const profil = {
     keahlian : ["HTML", "CSS", "JavaScript"]
 };
 
-let jumlahProyek = 3;
+let jumlahKomik = 3;
 
-const daftarProyek = [
-    { judul : "Halaman Profil", tahun : 2026, selesai : true },
-    { judul : "Katalog Produk", tahun : 2026, selesai : false },
+const daftarKomik = [
+    { judul : "I Wanna Be U", tahun : 2020, sudahDibaca : true },
+    { judul : "Rumor Has It", tahun : 2019, sudahDibaca : true },
+    { judul : "From Dreams to Freedom", tahun : 2022, sudahDibaca : true }
 ];
 
 const buatPerkenalan = ({nama, peran }) => {
@@ -20,17 +21,18 @@ const formatKeahlian = (daftar) => {
 };
 
 const kalimat = `${profil.nama} adalah seorang ${profil.peran} yang menguasai ${profil.keahlian.length} keahlian.`;
+
 console.log(kalimat);
-console.log(typeof jumlahProyek);
+console.log(typeof jumlahKomik);
 
 console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
 
 console.table(profil.keahlian);
-console.table(daftarProyek);
+console.table(daftarKomik);
 
-const selesai = daftarProyek.filter(proyek => proyek.selesai);
-console.table(selesai);
+const komikSudahDibaca = daftarKomik.filter(komik => komik.sudahDibaca === true);
+console.table(komikSudahDibaca);
 
-const katalog = daftarProyek.find(proyek => proyek.judul === "Katalog Produk");
-console.log(katalog);
+const carikomik = daftarKomik.find(komik => komik.judul === "I Wanna Be U");
+console.log(carikomik);
