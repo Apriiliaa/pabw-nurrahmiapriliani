@@ -1,0 +1,160 @@
+.tabel-wrapper {
+  overflow-x: auto;                  /* Biar tabel bisa digeser horizontal di layar sempit. */
+  max-width: 100%;                   /* Biar nggak melebihi lebar kolom. */
+}
+
+table {
+  width: 100%;                       /* Biar tabel selebar kolom. */
+  border-collapse: collapse;         /* Hapus jarak antar garis tabel. */
+  background: var(--color-surface);  /* Latar tabel pakai token. */
+}
+
+caption {
+  text-align: left;               /* Judul tabel rata kiri. */
+  font-weight: bold;
+  margin-bottom: var(--space-2);
+  color: var(--color-fg);
+}
+
+th, td {
+  border: 1px solid var(--color-border);    /* Garis tepi sel. */
+  padding: var(--space-2) var(--space-3);   /* Ruang dalam sel biar teks nggak mepet. */
+  text-align: left;                         /* Teks rata kiri. */
+}
+
+thead th {
+  background: var(--color-surface-2, rgba(255,255,255,0.1)); /* Latar header beda dikit. */
+  font-weight: bold;
+}
+
+tbody th {
+  font-weight: normal;            /* Judul baris (scope="row") dibikin normal aja. */
+  text-align: left;
+}
+
+tbody tr:hover {
+  background: var(--color-surface-2, rgba(255,255,255,0.05));   /* Efek hover biar gampang dibaca. */
+}
+
+.galeri {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 12rem));  /* Biar kolom galeri bisa menyesuaikan lebar layar. */
+  gap: var(--space-4);
+}
+
+.kartu {                                    /* Styling kartu biar rapi & konsisten. */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  padding: var(--card-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 14rem;                          /* Biar semua kartu punya tinggi minimum sama. */
+  align-content: start;                      /* Biar konten kartu di atas, bukan di tengah. */
+  min-width: 0;                               /* Biar kartu bisa mengecil di layar sempit. */
+}
+
+.kartu img {                              /* Biar gambar kartu nggak melebihi lebar kartu. */
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm, 4px);
+  object-fit: cover;
+}
+
+.kartu__deskripsi {
+  font-size: var(--text-sm);        /* Ukuran kecil, sama kayak kaki kartu */
+  color: var(--color-fg);           /* Warna teks utama */
+  opacity: 0.85;                    /* Biar nggak terlalu mencolok. */
+  line-height: 1.4;                 /* Biar jarak antar baris nggak terlalu jauh. */
+  margin: 0;                        /* Hapus jarak default paragraf. */
+  overflow-wrap:anywhere;           /* Biar teks panjang nggak keluar dari kartu. */
+  display: -webkit-box;             /* Biar teks nggak terlalu panjang, maksimal 3 baris. */
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}                 
+
+.kartu__kaki {
+  display: flex;
+  align-items: center;              /* Rata tengah vertikal. */
+  justify-content: space-between;   /* Kiri & kanan mentok. */
+  gap: var(--space-2);              /* Jarak antar item di kaki kartu. */
+  font-size: var(--text-sm);
+  color: var(--color-fg);
+  min-width: 0;                     /* Biar teks bisa mengecil di layar sempit. */
+}
+
+.kartu__kaki figcaption {
+  font-weight: 600;
+  overflow-wrap:anywhere;  /* Biar teks panjang nggak keluar dari kartu. */
+  min-width: 0;             /* Biar teks bisa mengecil di layar sempit. */
+}
+
+form {
+  display: flex;              /* Aktifin mode flexbox. */
+  flex-direction: column;     /* Susun kolom form ke bawah. */
+  gap: var(--space-4);        /* Jarak antar kolom form pakai token. */
+}
+
+.form-kolom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2); /* Jarak label ke isian, seragam. */
+}
+
+label {                       
+  font-size: var(--text-sm);  /* Ukuran label pakai token. */
+  font-weight: 600;           /* Teks label agak tebal. */
+}
+
+input, select, textarea { 
+  font: inherit;                          /* Ikutin ukuran huruf halaman. */
+  padding: var(--space-1) var(--space-2); /* Jarak dalam kotak isian. */
+  border: 1px solid var(--color-border);  /* Garis tepi tipis pakai token. */
+  border-radius: var(--radius-md);        /* Sudut membulat pakai token. */
+  background: var(--color-surface);       /* Latar putih bersih pakai token. */
+  color: var(--color-fg);                 /* Warna teks pakai token. */
+  max-width: 100%;                        /* Biar nggak melebihi lebar kolom. */
+  box-sizing: border-box;                  /* Biar padding & border masuk hitungan lebar. */
+}
+
+button {
+  font: inherit;                            /* Ikutin font halaman. */
+  padding: var(--space-2) var(--space-4);   /* Jarak dalam tombol. */
+  border: 1px solid transparent;            /* Border transparan biar ukurannya sama kayak input. */
+  border-radius: var(--radius-md);          /* Sudut membulat pakai token. */
+  background: var(--color-primary);         /* Warna tombol pakai token (Biru). */
+  color: var(--color-on-primary);           /* Warna teks tombol pakai token (Putih). */
+  cursor: pointer;                          /* Kursor berubah jadi tangan. */
+  align-self: flex-start;
+  transition: opacity 0.2s ease;            /* Animasi halus pas hover. */
+}
+
+button:hover {
+  opacity: 0.9;                             /* Bikin agak transparan pas di-hover. */
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);    /* Garis fokus pakai token pink. */
+  outline-offset: 2px;                      /* Kasih jarak 2px biar nggak nempel. */
+}
+
+/* Baru muncul kalau pengguna salah isi, bukan dari awal. */
+input:user-invalid {                    
+  border-color: var(--color-danger);    /* Warna border jadi pink tua. */
+  border-width: 2px;                    /* Border agak lebih tebal. */
+}
+
+.pesan-galat { 
+  display: none;                /* Sembunyikan dulu pesannya. */  
+  color: var(--color-danger);   /* Warna teks pakai token (Pink tua). */
+  font-size: var(--text-sm);    /* Ukuran teks kecil pakai token. */
+  margin-top: var(--space-1);   /* Jarak di atas pesan galat. */
+}
+
+.form-kolom:has(input:user-invalid) .pesan-galat { 
+  display: block;           /* Munculin pesan kalau inputnya salah. */    
+}
