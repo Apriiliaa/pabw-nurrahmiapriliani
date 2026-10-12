@@ -184,3 +184,13 @@ input:user-invalid {
   color: var(--color-on-primary);         /* Teks tombol aktif pakai token (Putih). */
   border-color: var(--color-primary);     /* Border tombol aktif pakai token (Biru). */
 }
+
+input[aria-invalid="true"], select[aria-invalid="true"] {
+  border-color: var(--color-danger);    /* Warna border jadi pink tua. */
+  border-width: 2px;                    /* Border agak lebih tebal. */
+}
+
+.form-kolom:has(input[aria-invalid="true"]) .pesan-galat, 
+.form-kolom:has(select[aria-invalid="true"]) .pesan-galat {
+  display: block;                                              /* Munculin pesan kalau inputnya salah. */    
+}
