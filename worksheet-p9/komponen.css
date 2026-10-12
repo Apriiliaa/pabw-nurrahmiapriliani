@@ -158,3 +158,29 @@ input:user-invalid {
 .form-kolom:has(input:user-invalid) .pesan-galat { 
   display: block;           /* Munculin pesan kalau inputnya salah. */    
 }
+
+#filter {
+  display: flex;                        /* Aktifin mode flexbox. */
+  gap: var(--space-2);                  /* Jarak antar tombol pakai token. */
+  margin-bottom: var(--space-3);        /* Jarak di bawah tombol pakai token. */
+}
+
+.filter-btn {
+  background: var(--color-surface);       /* Latar tombol pakai token. */
+  color: var(--color-fg);                 /* Teks tombol pakai token. */
+  padding: var(--space-1) var(--space-3); /* Jarak dalam tombol. */
+  border: 1px solid var(--color-border);  /* Border pakai token. */
+  border-radius: var(--radius-md);        /* Sudut membulat pakai token. */
+  font-size: var(--text-sm);              /* Ukuran teks kecil pakai token. */
+  cursor: pointer;                        /* Kursor jadi tangan. */
+}
+
+.filter-btn:hover {
+  opacity: 0.9;                             /* Bikin agak transparan pas di-hover. */
+}
+
+.filter-btn.aktif {
+  background: var(--color-primary);       /* Latar tombol aktif pakai token (Biru). */
+  color: var(--color-on-primary);         /* Teks tombol aktif pakai token (Putih). */
+  border-color: var(--color-primary);     /* Border tombol aktif pakai token (Biru). */
+}

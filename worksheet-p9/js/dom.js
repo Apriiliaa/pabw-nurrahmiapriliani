@@ -9,6 +9,8 @@ const tbody = document.querySelector("#koleksi tbody");
 
 const temaToggle = document.querySelector("#tema");
 const labelTema = document.querySelector("label[for='tema']");
+const wadahGaleri = document.querySelector(".galeri");
+const filterContainer = document.querySelector("#filter");
 
 formTambah.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -27,10 +29,9 @@ formTambah.addEventListener("submit", function(event) {
         <td>${statusBaru}</td>
     `;
 
-    tbodyKoleksi.appendChild(barisBaru);
+    tbody.appendChild(barisBaru);
 
     formTambah.reset();
-
     console.log(`Komik "${judulBaru}" berhasil ditambahkan!`);
 });
 
@@ -41,8 +42,6 @@ temaToggle.addEventListener('change', function() {
         labelTema.textContent = 'Tema gelap';
     }
 });
-
-const wadahGaleri = document.querySelector(".galeri");
 
 function buatKartu(komik) {
     const kartu = document.createElement('article');
@@ -55,7 +54,7 @@ function buatKartu(komik) {
 
     const deskripsi = document.createElement('p');
     deskripsi.className = 'kartu__deskripsi';
-    deskripsi.textContent = `Tahun terbit: ${komik.tahun}`;
+    deskripsi.textContent = `Tahun terbit : ${komik.tahun}`;
 
     const kakiKartu = document.createElement('div');
     kakiKartu.className = 'kartu__kaki';
@@ -71,7 +70,28 @@ function buatKartu(komik) {
     return kartu;
 }
 
-wadahGaleri.replaceChildren();
-daftarKomik.forEach((komik) => {
-    wadahGaleri.append(buatKartu(komik));
+function render(dataKomik) {
+    wadahGaleri.replaceChildren();
+
+    dataKomik.forEach((komik) => {
+        wadahGaleri.append(buatKartu(komik));
+    });
+}
+
+render(daftarKomik);
+
+filterContainer.addEventListener('click', (event) => {
+    const tombol = event.target.closest('.filter-btn');
+    if (!tombol) return;
+    const kategori = tombol.dataset.kategori;
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('aktif');
+    });
+    tombol.classList.add('aktif');
+
+    const dataTersaring = daftarKomik.filter((komik) => {
+        if (kategori === 'semua') return true;
+        return komik.status === kategori;
+    });
+    render(dataTersaring);
 });
