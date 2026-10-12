@@ -43,5 +43,3 @@ console.table(komikSudahDibaca);
 
 const carikomik = daftarKomik.find(komik => komik.judul === "I Wanna Be U");
 console.log(carikomik);
-
-// Lembar E : Latihan membaca  pesan galat (error) dan debugging  
