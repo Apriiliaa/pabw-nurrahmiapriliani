@@ -59,3 +59,26 @@ AI saya gunakan sebagai pendamping belajar untuk:
 3. Memahami cara kerja array methods (`filter`, `find`, `map`) dan kapan harus menggunakannya.
 
 Saya mengetik ulang dan memverifikasi setiap baris kode yang disarankan AI agar saya benar-benar memahami cara kerjanya.
+
+## Pertemuan 9 — DOM, Event, dan Interaktivitas
+Pada pertemuan ini, halaman web yang sebelumnya statis (hanya menampilkan HTML) mulai dihidupkan menggunakan JavaScript. Fokus utamanya adalah memanipulasi DOM (Document Object Model), menangani event (interaksi pengguna), serta memvalidasi form sebelum data dikirim.
+
+### Implementasi yang dilakukan:
+- Pemilihan Elemen (DOM Selection): Mengambil elemen HTML menggunakan `document.querySelector` dan `document.querySelectorAll`, lalu menyimpannya ke dalam variabel.
+- Render Data Dinamis: Mengubah array `daftarKomik` dari `app.js` menjadi kartu-kartu HTML di halaman menggunakan `document.createElement`, `textContent`, dan `append`. Wadah galeri dikosongkan terlebih dahulu dengan `replaceChildren()` setiap kali render ulang agar kartu tidak berlipat ganda.
+- Event Delegation: Memasang satu pendengar event (`addEventListener`) pada induk tombol filter, lalu menggunakan `event.target.closest('.filter-btn')` untuk melayani semua tombol. Ini membuat kode lebih hemat memori dan rapi.
+- Validasi Form: Mencegah halaman dimuat ulang saat form disubmit (`event.preventDefault()`). Validasi dilakukan dengan `.trim()` untuk mengecek isi kolom, lalu menampilkan pesan galat dan mengubah border menjadi merah menggunakan atribut `aria-invalid`.
+- Debugging (Pemecahan Masalah): 
+  - Memperbaiki error CORS dan `type="module"` saat menyambungkan `dom.js`.
+  - Memperbaiki error 404 pada gambar dengan menyesuaikan path relatif (menghapus `../`).
+  - Memperbaiki pesan "Belum ada komik" yang hilang karena ikut terhapus oleh fungsi `replaceChildren()`.
+  - Menghapus tanda koma yang salah pada selector CSS validasi form.
+
+## Catatan penggunaan AI
+Saya mengerjakan sendiri logika utama, pengetikan kode, dan penyesuaian tampilan di `dom.js` dan `komponen.css`. AI saya gunakan sebagai pendamping belajar untuk:
+1. Memahami cara kerja `type="module"` dan mengapa terjadi error CORS saat membuka file HTML secara langsung.
+2. Memahami konsep Event Delegation (mengapa pendengar ditaruh di induk, bukan di setiap tombol).
+3. Memecahkan masalah (debugging) saat gambar tidak muncul (404), memahami perbedaan `querySelector` dan `querySelectorAll`, serta cara mengatasi pesan kosong yang hilang karena fungsi `replaceChildren()`.
+4. Memahami sintaks validasi form seperti `.trim()`, `aria-invalid`, dan `focus()`.
+
+Saya mengetik ulang, menguji di Console, dan memverifikasi setiap baris kode yang disarankan AI agar saya benar-benar memahami alur kerjanya.
