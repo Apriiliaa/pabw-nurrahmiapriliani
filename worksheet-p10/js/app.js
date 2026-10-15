@@ -40,3 +40,4 @@ export async function ambilDataKomik() {
         throw error;
     }
 }
+// Belajar JSON dua arah - P10
