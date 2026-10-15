@@ -84,7 +84,9 @@ async function init() {
         render(dataKomik);
     
         if (elemenMuat) elemenMuat.hidden = true;
+
     } catch (error) {
+        
         console.error('Gagal memuat data komik:', error);
         if (elemenMuat) elemenMuat.hidden = true;
         if (elemenPesan) {

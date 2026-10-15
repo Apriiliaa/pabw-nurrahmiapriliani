@@ -25,12 +25,18 @@ console.table(profil.keahlian);
 const ALAMAT ='data/komik.json';
 
 export async function ambilDataKomik() {
-    const respons = await fetch(ALAMAT);
-    console.log('status :', respons.status, 'ok :', respons.ok);
+    try {
+        const respons = await fetch(ALAMAT);
+        console.log('status :', respons.status, 'ok :', respons.ok);
 
-    if (!respons.ok) {
-        throw new Error('Status ' + respons.status);
+        if (!respons.ok) {
+            throw new Error('Status ' + respons.status);
+        }
+
+        const data = await respons.json();
+        return data;
+    } catch (error) {
+        console.error("Gagal memuat data komik:", error.message);
+        throw error;
     }
-
-    return respons.json();
 }
