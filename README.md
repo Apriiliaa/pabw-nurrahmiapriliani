@@ -2,6 +2,7 @@
 
 Repo ini memuat pekerjaan mata kuliah Pengembangan Aplikasi Berbasis Web, satu folder untuk setiap pertemuan.
 
+
 ## Pertemuan 3 — Halaman profil saya
 Topik halaman saya: Daftar Komik Favorit Saya
 
@@ -58,7 +59,7 @@ AI saya gunakan sebagai pendamping belajar untuk:
 2. Memastikan penulisan sintaks yang benar, seperti penempatan tanda koma pada objek, penggunaan `const` dan `let`, serta penulisan arrow function dan template literal.
 3. Memahami cara kerja array methods (`filter`, `find`, `map`) dan kapan harus menggunakannya.
 
-Saya mengetik ulang dan memverifikasi setiap baris kode yang disarankan AI agar saya benar-benar memahami cara kerjanya.
+Saya mengetik ulang dan memverifikasi setiap baris kode yang disarankan AI agar saya memahami cara kerjanya.
 
 ## Pertemuan 9 — DOM, Event, dan Interaktivitas
 Pada pertemuan ini, halaman web yang sebelumnya statis (hanya menampilkan HTML) mulai dihidupkan menggunakan JavaScript. Fokus utamanya adalah memanipulasi DOM (Document Object Model), menangani event (interaksi pengguna), serta memvalidasi form sebelum data dikirim.
@@ -81,4 +82,27 @@ Saya mengerjakan sendiri logika utama, pengetikan kode, dan penyesuaian tampilan
 3. Memecahkan masalah (debugging) saat gambar tidak muncul (404), memahami perbedaan `querySelector` dan `querySelectorAll`, serta cara mengatasi pesan kosong yang hilang karena fungsi `replaceChildren()`.
 4. Memahami sintaks validasi form seperti `.trim()`, `aria-invalid`, dan `focus()`.
 
-Saya mengetik ulang, menguji di Console, dan memverifikasi setiap baris kode yang disarankan AI agar saya benar-benar memahami alur kerjanya.
+Saya mengetik ulang, menguji di Console, dan memverifikasi setiap baris kode yang disarankan AI agar saya memahami alur kerjanya.
+
+
+## Pertemuan 10 — Data dari Jaringan, Pemisahan Lapisan, dan Pembacaan JSON
+
+Pada pertemuan ini, fokus utama proyek adalah memindahkan data komik yang sebelumnya ada di dalam (`app.js`) menjadi file eksternal berformat JSON (`komik.json`). Selain itu, struktur kode dirapikan dengan menerapkan prinsip pemisahan tugas (Separation of Concerns) ke dalam tiga berkas yang berbeda.
+
+### Implementasi yang dilakukan:
+- Pembacaan JSON (Fetch API): Data statis dipindahkan ke `data/komik.json`. Data ini diambil secara asinkronus menggunakan fungsi `fetch` yang dibungkus dengan `async/await`.
+- Pemisahan Tiga Berkas : 
+  - `api.js`: Bertugas khusus untuk mengambil data (fetch) dari file JSON atau URL GitHub Raw.
+  - `dom.js`: Bertugas khusus untuk memanipulasi DOM (membuat kartu, merender, memasang filter, dan menampilkan pesan galat).
+  - `app.js`: Menjadi "otak" atau perakit yang mengimpor fungsi dari `api.js` dan `dom.js`, lalu menjalankan alur program.
+- Penanganan Galat (Error Handling): Menggunakan blok `try/catch/finally` pada fungsi `muat()` di `app.js`. Jika jaringan mati atau file tidak ditemukan (404), program akan menampilkan pesan galat yang ramah pengguna, bukan layar kosong. Blok `finally` memastikan status loading selalu dimatikan.
+- Pengambilan Data dari Internet (GitHub Raw): Setelah data berhasil dibaca dari lokal, alamat fetch di `api.js` diubah untuk mengambil data langsung dari URL *Raw* GitHub, sehingga web dapat menampilkan data secara *live* dari internet.
+
+## Catatan penggunaan AI
+Saya mengerjakan sendiri pemisahan logika ke dalam tiga berkas (`api.js`, `app.js`, `dom.js`) dan penyesuaian kode render di `dom.js`. AI saya gunakan sebagai pendamping belajar untuk:
+1. Memahami konsep "Circular Dependency" (ketergantungan berputar) dan mengapa `dom.js` tidak boleh mengimpor `app.js`.
+2. Memahami perilaku `fetch` yang tidak melempar error pada status 404, sehingga perlu pengecekan `respons.ok` secara manual.
+3. Memecahkan masalah (debugging) terkait *caching* browser yang membuat perubahan kode tidak muncul, serta mengatasi error 404 pada path gambar dan URL GitHub Raw.
+4. Memahami sintaks penanganan error menggunakan `try/catch/finally` dan penggunaan `throw new Error()`.
+
+Saya mengetik ulang, menguji di Console, dan memverifikasi setiap baris kode yang disarankan AI agar saya memahami perbedaan tugas antara mengambil data, merakit program, dan menggambar elemen ke layar.
