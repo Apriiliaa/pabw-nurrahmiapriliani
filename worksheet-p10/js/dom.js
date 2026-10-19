@@ -1,4 +1,8 @@
-import { ambilDataKomik } from "./app.js";
+const temaToggle = document.querySelector("#tema");
+const labelTema = document.querySelector("label[for='tema']");
+const wadahGaleri = document.querySelector(".galeri");
+const filterContainer = document.querySelector("#filter");
+const pesanKosong = document.querySelector("#pesan-kosong");
 
 const formTambah = document.querySelector("#tambah form");
 const inputJudul = document.querySelector('#judul');
@@ -7,14 +11,8 @@ const inputGenre = document.querySelector('#genre');
 const selectStatus = document.querySelector('#status');
 const tbody = document.querySelector("#koleksi tbody"); 
 
-const temaToggle = document.querySelector("#tema");
-const labelTema = document.querySelector("label[for='tema']");
-const wadahGaleri = document.querySelector(".galeri");
-const filterContainer = document.querySelector("#filter");
-const pesanKosong = document.querySelector("#pesan-kosong"); 
-
 // Variabel penampung data dari JSON
-let dataKomik = [];
+// let dataKomik = [];
 
 function buatKartu(komik) {
     const kartu = document.createElement('article');
@@ -56,7 +54,7 @@ function buatKartu(komik) {
     return kartu;
 }
 
-function render(dataKomik) {
+export function render(dataKomik) {
     wadahGaleri.replaceChildren(); 
     
     if (dataKomik.length === 0) {
@@ -71,62 +69,51 @@ function render(dataKomik) {
     });
 }
 
-//  Fungsi Init untuk mengambil data dan merender
-async function init() {
+export function aturMemuat(aktif) {
     const elemenMuat = document.getElementById('muat');
+    if (elemenMuat) elemenMuat.hidden = !aktif;
+}
+
+export function tampilkanGalat(pesan) {
     const elemenPesan = document.getElementById('pesan');
-
-    if (elemenMuat) elemenMuat.hidden = false;
-    if (elemenPesan) elemenPesan.hidden = true;
-
-    try {
-        dataKomik = await ambilDataKomik();
-        render(dataKomik);
-    
-        if (elemenMuat) elemenMuat.hidden = true;
-
-    } catch (error) {
-        
-        console.error('Gagal memuat data komik:', error);
-        if (elemenMuat) elemenMuat.hidden = true;
-        if (elemenPesan) {
-            elemenPesan.textContent = 'Gagal memuat data komik. Silakan coba lagi nanti.';
-            elemenPesan.hidden = false;
-        }
+    if (elemenPesan) {
+        elemenPesan.textContent = pesan;
+        elemenPesan.hidden = false;
     }
 }
 
-init();         // Jalankan program
+export function pasangFilter(data) {
+    filterContainer.addEventListener('click', (event) => {
+        const tombol = event.target.closest('.filter-btn');
+        if (!tombol) return;
 
-// Event Filter
-filterContainer.addEventListener('click', (event) => {
-    const tombol = event.target.closest('.filter-btn');
-    if (!tombol) return;
+        const kategori = tombol.dataset.kategori;
 
-    const kategori = tombol.dataset.kategori;
+        document.querySelectorAll('.filter-btn').forEach((btn) => {
+            btn.classList.remove('aktif');
+        });
+        
+        tombol.classList.add('aktif');
 
-    document.querySelectorAll('.filter-btn').forEach((btn) => {
-        btn.classList.remove('aktif');
+        const dataTersaring = data.filter((komik) => {
+            if (kategori === "semua") return true;
+            return komik.status === kategori;
+        });
+        
+        render(dataTersaring);
     });
-    tombol.classList.add('aktif');
+}
 
-    const dataTersaring = dataKomik.filter((komik) => {
-        if (kategori === "semua") return true;
-        return komik.status === kategori;
-    });
-
-    render(dataTersaring);
-});
-
-// Event Tambah Komik
 formTambah.addEventListener("submit", function(event) {
     event.preventDefault();
 
+    
     const judulBaru = inputJudul.value.trim();
     const pengarangBaru = inputPengarang.value.trim();
     const genreBaru = inputGenre.value.trim();
     const statusBaru = selectStatus.value;
 
+    // Event Tambah Komik
     let formValid = true;
 
     // Validasi Judul

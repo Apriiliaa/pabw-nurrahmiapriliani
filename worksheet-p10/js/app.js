@@ -1,3 +1,7 @@
+import { ambilDataKomik } from './api.js';
+
+import { render, pasangFilter, aturMemuat, tampilkanGalat } from './dom.js';
+
 const profil = {
     nama : "Aprilia",
     peran : "Mahasiswa Informatika",
@@ -22,22 +26,22 @@ console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
 console.table(profil.keahlian);
 
-const ALAMAT ='data/komik.json';
+async function muat() {
+    aturMemuat(true);
+    tampilkanGalat("");
 
-export async function ambilDataKomik() {
     try {
-        const respons = await fetch(ALAMAT);
-        console.log('status :', respons.status, 'ok :', respons.ok);
+        const data = await ambilDataKomik();
 
-        if (!respons.ok) {
-            throw new Error('Status ' + respons.status);
-        }
-
-        const data = await respons.json();
-        return data;
-    } catch (error) {
-        console.error("Gagal memuat data komik:", error.message);
-        throw error;
+        pasangFilter(data);
+        render(data);
+        
+    } catch (galat) {
+        console.error(galat.message);
+        tampilkanGalat('Data gagal dimuat. Periksa koneksi, lalu muat ulang halaman.');
+    } finally {
+        aturMemuat(false);
     }
 }
-// Belajar JSON dua arah - P10
+
+muat();
