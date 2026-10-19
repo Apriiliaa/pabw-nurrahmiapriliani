@@ -9,3 +9,5 @@ export async function ambilDataKomik() {
     
     return respons.json();
 }
+
+// P10 — tiga kasus sulit ditangani
