@@ -9,3 +9,5 @@ export async function ambilDataKomik() {
     
     return respons.json();
 }
+
+// P12 — build produksi berhasil
