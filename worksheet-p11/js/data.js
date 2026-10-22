@@ -1,17 +1,17 @@
-const profil = {
+export const profil = {
     nama : "Aprilia",
     peran : "Mahasiswa Informatika",
     keahlian : ["HTML", "CSS", "JavaScript"]
 };
 
-let jumlahKomik = 3;
+export let jumlahKomik = 3;
 
-const buatPerkenalan = ({nama, peran }) => {
+export const buatPerkenalan = ({nama, peran }) => {
     return `${nama} adalah seorang ${peran}.`;
 };
 
-const formatKeahlian = (daftar) => {
+export const formatKeahlian = (daftar) => {
     return daftar.join(", ");
 };
 
-const kalimat = `${profil.nama} adalah seorang ${profil.peran} yang menguasai ${profil.keahlian.length} keahlian.`;
+export const kalimat = `${profil.nama} adalah seorang ${profil.peran} yang menguasai ${profil.keahlian.length} keahlian.`;
