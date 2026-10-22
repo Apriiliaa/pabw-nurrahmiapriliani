@@ -1,11 +1,14 @@
 <script setup>
 import { ref } from 'vue';
+import { profil } from './data.js';
+import KepalaProfil from './components/KepalaProfil.vue';
 
-const isTemaGelap = ref(false);
+const isTemaBiru = ref(false);
+const isTemaPink = ref(false);
 
 function toggleTema() {
-  isTemaGelap.value = !isTemaGelap.value;
-  document.documentElement.classList.toggle('tema-gelap-aktif', isTemaGelap.value); // Opsional, sesuaikan dengan css-mu
+  isTemaBiru.value = !isTemaBiru.value;
+  document.documentElement.classList.toggle('tema-gelap-aktif', isTemaGelap.value); 
 }
 </script>
 
@@ -16,22 +19,17 @@ function toggleTema() {
   <div class="page">
     <header>
       <div class="tombol-tema-wrapper">
-        <input type="checkbox" id="tema" class="pengalih-tema" v-model="isTemaGelap">
-        <label for="tema" class="tombol-tema">{{ isTemaGelap ? 'Tema terang' : 'Tema gelap' }}</label>
-        <input type="checkbox" id="tema-pink" class="pengalih-tema">
-        <label for="tema-pink" class="tombol-tema tombol-pink">Tema pink</label>
+        <!-- Tema Gelap -->
+        <input type="checkbox" id="tema" class="pengalih-tema" v-model="isTemaBiru">
+        <label for="tema" class="tombol-tema">{{ isTemaBiru ? 'Tema gelap' : 'Tema biru' }}</label>
+        
+        <!-- Tema Pink -->
+        <input type="checkbox" id="tema-pink" class="pengalih-tema" v-model="isTemaPink">
+        <label for="tema-pink" class="tombol-tema tombol-pink">{{ isTemaPink ? 'Tema terang' : 'Tema pink' }}</label>
       </div>
+
+      <KepalaProfil :profil="profil" />
      
-      <div class="navbar">
-        <h1>Daftar Komik Favorit Saya</h1>
-        <nav aria-label="Navigasi Utama">
-          <ul>
-             <li><a href="#koleksi">Koleksi Komik</a></li>
-             <li><a href="#tambah">Tambah Komik</a></li>
-             <li><a href="#tentang-saya">Tentang Saya</a></li>
-          </ul>
-       </nav>
-      </div>
    </header>
 
  <main class="isi">
