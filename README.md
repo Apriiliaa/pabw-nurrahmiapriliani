@@ -129,3 +129,31 @@ Saya mengerjakan sendiri proses pemecahan logika ke dalam lima file terpisah, me
 5. Memahami cara kerja `JSON.stringify` dan `JSON.parse` untuk menyimpan objek ke dalam LocalStorage.
 
 Saya mengetik ulang, menguji di Console (memastikan tidak ada error), dan memverifikasi setiap baris kode yang disarankan AI agar saya memahami alur dari state, render, hingga penyimpanan lokal.
+
+
+## Pertemuan 12 — Build Tooling, npm, dan Framework SPA (Vue.js)
+
+Pada pertemuan ini, terjadi perubahan besar dalam cara pengembangan aplikasi. Beralih dari JavaScript murni (Vanilla JS) ke dalam sebuah Framework modern, yaitu Vue.js, dengan bantuan Build Tool Vite. Fokus utamanya adalah membangun aplikasi berbasis komponen (Single Page Application) dan mempelajari cara mengemas (build) aplikasi agar siap dirilis ke internet.
+
+### Implementasi yang dilakukan:
+- Inisialisasi Proyek Vite & Vue: Membuat proyek baru di folder `worksheet-p12` menggunakan perintah `npm create vite@latest`. 
+- Migrasi Aset P11: Memindahkan semua aset lama tanpa mengubah perilakunya. File CSS dipindah ke `src/`, file JSON dan gambar dipindah ke `public/`, dan struktur HTML dari `profil.html` dipindah ke `App.vue`.
+- Pemecahan Komponen (Component-Based): Halaman yang tadinya menumpuk di satu file dipecah menjadi komponen kecil. Membuat `KepalaProfil.vue` yang menerima data (`props`) dari `App.vue`, serta `DaftarKomik.vue` untuk merender daftar kartu komik.
+- Reaktivitas Vue: Menggantikan fungsi `render(state)` manual dari P11 dengan sistem reaktivitas Vue menggunakan `reactive()`. Tampilan kini otomatis berubah saat data di dalam state berubah.
+- Siklus Hidup Vue (Lifecycle Hooks): Menggunakan `onMounted` untuk mengambil data dari API (GitHub Raw) saat halaman pertama kali dimuat, dan `watch` untuk memantau setiap perubahan state agar otomatis tersimpan ke `localStorage`.
+- Build Produksi: Menjalankan `npm run build` untuk mengemas kode menjadi satu folder `dist` yang ringan (di minify). Menguji hasilnya menggunakan `npm run preview`.
+
+## Catatan penggunaan AI
+Saya mengerjakan sendiri sebagian besar struktur Vue, mulai dari memindahkan aset ke folder `src/` dan `public/`, memecah komponen, menulis `props`, hingga menggunakan `reactive` dan `watch`. AI saya gunakan sebagai pendamping belajar untuk:
+1. Memahami perbedaan struktur folder Vanilla JS dengan Vue (mengapa aset statis masuk ke `public/` sedangkan CSS masuk ke `src/`).
+2. Memecahkan masalah (debugging) saat konfigurasi PowerShell menolak perintah `npm`, serta memperbaiki file gambar yang rusak (0 bytes) di folder `public/`.
+3. Memahami alur reaktivitas Vue (mengapa `render()` tidak lagi dipakai dan bagaimana `v-for` serta `v-model` bekerja).
+4. Memahami konsep props (mengirim data dari induk ke anak) dan `computed` untuk memfilter data secara otomatis.
+5. Memahami perbedaan antara `npm run dev` (pengembangan) dan `npm run build` / `npm run preview` (produksi).
+
+Saya mengetik ulang, memverifikasi setiap baris kode, dan memastikan tidak ada error di Console browser.
+
+### Catatan Versi dan Build
+- Versi Node.js: `v24.22.1`
+- Versi npm: `11.19.1` 
+- Ukuran Build: Sebelum build (`4.0 MB` / 31 file), Sesudah build (`2.5 MB` / 15 file).
