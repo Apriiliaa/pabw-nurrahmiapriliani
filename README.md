@@ -106,3 +106,26 @@ Saya mengerjakan sendiri pemisahan logika ke dalam tiga berkas (`api.js`, `app.j
 4. Memahami sintaks penanganan error menggunakan `try/catch/finally` dan penggunaan `throw new Error()`.
 
 Saya mengetik ulang, menguji di Console, dan memverifikasi setiap baris kode yang disarankan AI agar saya memahami perbedaan tugas antara mengambil data, merakit program, dan menggambar elemen ke layar.
+
+
+## Pertemuan 11 — Modul, State, dan Penyimpanan Klien
+
+Pada pertemuan ini, fokus utama proyek adalah merombak kode yang tadinya menumpuk menjadi struktur modular (satu berkas, satu tanggung jawab) dan memindahkan "keadaan" (state) dari DOM ke dalam objek JavaScript. Selain itu, mulai menggunakan `localStorage` agar halaman web bisa mengingat pilihan pengguna meskipun halaman di refresh atau tab ditutup.
+
+### Implementasi yang dilakukan:
+- Pemecahan Modul (Modularisasi): Kode dipecah menjadi lima modul wajib (`data.js`, `state.js`, `dom.js`, `events.js`, dan `app.js`). `api.js` dari Pertemuan 10 tetap dipertahankan. Hal ini membuat `app.js` menjadi sangat bersih karena hanya bertugas merakit (import dan memanggil fungsi).
+- Manajemen State (State Management): Data seperti `dataKomik`, `filterAktif`, dan `favorit` dipindahkan ke dalam objek `state` di `state.js`. Tampilan (DOM) kini hanya menggambar ulang berdasarkan apa yang ada di dalam `state`, bukan menyimpan data di dalam elemen HTML. 
+- Tombol Favorit: Menambahkan tombol bintang (★/☆) pada setiap kartu komik. Data bintang ini disimpan dalam array `favorit` di dalam state.
+- Penyimpanan Pengguna (LocalStorage): Membuat fungsi `simpan()` dan `muat()` di `state.js`. Setiap kali filter diganti atau bintang diklik, data akan diubah menjadi teks (JSON) dan disimpan di browser. Saat halaman dimuat ulang, data akan dibaca kembali.
+- Penanganan Simpanan Rusak: Menambahkan pengecekan `versi` pada fungsi `muat()`. Jika data di LocalStorage kosong, rusak (bukan JSON), atau versinya berbeda, data tersebut akan dihapus dan web akan menggunakan nilai bawaan agar tidak crash.
+- Tombol Atur Ulang: Menambahkan tombol untuk membersihkan LocalStorage dan mengembalikan halaman ke keadaan awal.
+
+## Catatan penggunaan AI
+Saya mengerjakan sendiri proses pemecahan logika ke dalam lima file terpisah, memindahkan event listener ke `events.js`, dan menulis fungsi penyimpanan `localStorage`. AI saya gunakan sebagai pendamping belajar untuk:
+1. Memahami konsep "Single Responsibility Principle" (satu berkas satu tugas) dalam modularisasi JavaScript dan bagaimana cara kerja `import`/`export`.
+2. Memahami konsep State Management (mengapa data harus keluar dari DOM agar tidak hilang saat fungsi `render()` dijalankan).
+3. Memecahkan masalah (debugging) saat terjadi error `constisi is not defined` (kurang spasi) dan `muatState is not defined`.
+4. Memahami alur logika `try/catch` pada fungsi `muat()`, terutama mengapa perintah `return` yang diletakkan di baris paling atas membuat kode pengecekan versi di bawahnya tidak akan pernah tereksekusi.
+5. Memahami cara kerja `JSON.stringify` dan `JSON.parse` untuk menyimpan objek ke dalam LocalStorage.
+
+Saya mengetik ulang, menguji di Console (memastikan tidak ada error), dan memverifikasi setiap baris kode yang disarankan AI agar saya memahami alur dari state, render, hingga penyimpanan lokal.
