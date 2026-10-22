@@ -2,19 +2,24 @@ import { render } from './dom.js';
 
 export const state = {
     dataKomik: [],   
-    filterAktif: 'semua'
+    filterAktif: 'semua',
+    favorit: []
 };
 
 export function isiProyek(daftar) {
     state.dataKomik = daftar;
-    render(state.dataKomik);
+    render(state);
 }
 
 export function ubahFilter(kategori) {
     state.filterAktif = kategori;
-    const dataTersaring = state.dataKomik.filter((komik) => {
-        if (kategori === "semua") return true;
-        return komik.status === kategori;
-    });
-    render(dataTersaring);
+    render(state);
+}
+
+export function tambahFavorit(id) {
+    if (state.favorit.includes(id)) return;
+
+    state.favorit = [...state.favorit, id];
+
+    render(state);
 }

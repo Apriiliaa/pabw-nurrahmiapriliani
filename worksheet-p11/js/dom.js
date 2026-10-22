@@ -1,7 +1,9 @@
+import { saring } from './data.js';
+
 const wadahGaleri = document.querySelector(".galeri");
 const pesanKosong = document.querySelector("#pesan-kosong");
 
-function buatKartu(komik) {
+function buatKartu(komik, favorit) {
     const kartu = document.createElement('article');
     kartu.className = 'kartu';
 
@@ -26,26 +28,33 @@ function buatKartu(komik) {
     status.className = 'kartu__status';
     status.textContent = komik.status;
 
+    const tombol = document.createElement('button');
+    tombol.className = 'favorit';
+    tombol.dataset.id = komik.id;
+    tombol.textContent = favorit.includes(komik.id) ? "★" : "☆";
+
     const kakiKartu = document.createElement('div');
     kakiKartu.className = 'kartu__kaki';
-    kakiKartu.append(status);
+    kakiKartu.append(status, tombol);
 
     kartu.append(gambar, judul, tahun, sinopsis, kakiKartu);
     return kartu;
 }
 
-export function render(dataKomik) {
-    wadahGaleri.replaceChildren(); 
-    
-    if (dataKomik.length === 0) {
+export function render(state) {
+    wadahGaleri.replaceChildren();
+
+    const dataTampil = saring(state.dataKomik, state.filterAktif);
+
+    if (dataTampil.length === 0) {
         pesanKosong.style.display = 'block';
-        return; 
-    } 
-    
+        return
+    }
+
     pesanKosong.style.display = 'none';
-    
-    dataKomik.forEach((komik) => {
-        wadahGaleri.append(buatKartu(komik));
+
+    dataTampil.forEach((komik) => {
+        wadahGaleri.append(buatKartu(komik, state.favorit));
     });
 }
 

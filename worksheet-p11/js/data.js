@@ -15,3 +15,8 @@ export const formatKeahlian = (daftar) => {
 };
 
 export const kalimat = `${profil.nama} adalah seorang ${profil.peran} yang menguasai ${profil.keahlian.length} keahlian.`;
+
+export function saring(daftar, kategori) {
+    if (kategori === "semua") return daftar;
+    return daftar.filter((komik) => komik.status === kategori);
+}

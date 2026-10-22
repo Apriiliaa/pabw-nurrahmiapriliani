@@ -1,4 +1,4 @@
-import { ubahFilter } from './state.js';
+import { tambahFavorit, ubahFilter } from './state.js';
 import { updateTombolFilter, updateLabelTema, tambahBarisTabel } from './dom.js';
 
 export function pasangSemuaEvent() {
@@ -11,6 +11,8 @@ export function pasangSemuaEvent() {
     const selectStatus = document.querySelector('#status');
     const temaToggle = document.querySelector("#tema");
 
+    const wadahGaleri = document.querySelector(".galeri")       // mendeteksi klik tombol bintang
+
     filterContainer.addEventListener('click', (event) => {
         const tombol = event.target.closest('.filter-btn');
         if (!tombol) return;
@@ -18,6 +20,13 @@ export function pasangSemuaEvent() {
         const kategori = tombol.dataset.kategori;
         ubahFilter(kategori);         
         updateTombolFilter(kategori); 
+    });
+
+    wadahGaleri.addEventListener('click', (event) => {
+        const tombolFavorit = event.target.closest('.favorit');
+        if (!tombolFavorit) return;
+
+        tambahFavorit(Number(tombolFavorit.dataset.id));
     });
 
     formTambah.addEventListener("submit", function(event) {

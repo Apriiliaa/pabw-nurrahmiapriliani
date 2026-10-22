@@ -115,6 +115,19 @@ tbody tr:hover {
   letter-spacing: 0.5px;
 }
 
+.favorit {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: gold; /* Warna bintang */
+    padding: 0;
+    margin: 0;
+}
+.favorit:hover {
+    opacity: 0.7;
+}
+
 form {
   display: flex;              /* Aktifin mode flexbox. */
   flex-direction: column;     /* Susun kolom form ke bawah. */
