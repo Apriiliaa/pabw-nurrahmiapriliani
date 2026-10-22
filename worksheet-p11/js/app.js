@@ -1,6 +1,6 @@
 import { profil, buatPerkenalan, formatKeahlian, kalimat, jumlahKomik } from './data.js';
 import { ambilDataKomik } from './api.js';
-import { state, isiProyek } from './state.js';
+import { state, isiProyek, pulihkan, muat as muatState } from './state.js';
 import { aturMemuat, tampilkanGalat } from './dom.js';
 import { pasangSemuaEvent } from './events.js';
 
@@ -12,7 +12,9 @@ console.table(profil.keahlian);
 
 window.state = state;
 
-async function muat() {
+async function mulai() {
+    pulihkan(muatState());
+
     pasangSemuaEvent();
     aturMemuat(true);
     tampilkanGalat("");
@@ -28,4 +30,4 @@ async function muat() {
     }
 }
 
-muat();
+mulai();

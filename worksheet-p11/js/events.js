@@ -1,8 +1,7 @@
-import { tambahFavorit, ubahFilter } from './state.js';
+import { tambahFavorit, ubahFilter, aturUlang } from './state.js';
 import { updateTombolFilter, updateLabelTema, tambahBarisTabel } from './dom.js';
 
 export function pasangSemuaEvent() {
-    
     const filterContainer = document.querySelector("#filter");
     const formTambah = document.querySelector("#tambah form");
     const inputJudul = document.querySelector('#judul');
@@ -10,13 +9,17 @@ export function pasangSemuaEvent() {
     const inputGenre = document.querySelector('#genre');
     const selectStatus = document.querySelector('#status');
     const temaToggle = document.querySelector("#tema");
-
     const wadahGaleri = document.querySelector(".galeri")       // mendeteksi klik tombol bintang
+    const btnAturUlang = document.getElementById('atur-ulang');
+    if (btnAturUlang) {
+        btnAturUlang.addEventListener('click', () => {
+            aturUlang();
+        });
+    }
 
     filterContainer.addEventListener('click', (event) => {
         const tombol = event.target.closest('.filter-btn');
         if (!tombol) return;
-
         const kategori = tombol.dataset.kategori;
         ubahFilter(kategori);         
         updateTombolFilter(kategori); 
@@ -25,13 +28,11 @@ export function pasangSemuaEvent() {
     wadahGaleri.addEventListener('click', (event) => {
         const tombolFavorit = event.target.closest('.favorit');
         if (!tombolFavorit) return;
-
         tambahFavorit(Number(tombolFavorit.dataset.id));
     });
 
     formTambah.addEventListener("submit", function(event) {
         event.preventDefault();
-
         const judulBaru = inputJudul.value.trim();
         const pengarangBaru = inputPengarang.value.trim();
         const genreBaru = inputGenre.value.trim();
@@ -75,7 +76,6 @@ export function pasangSemuaEvent() {
     });
 
     temaToggle.addEventListener('change', function() {
-        // Panggil fungsi dari dom.js untuk ganti teks label
         updateLabelTema(temaToggle.checked);
     });
 }

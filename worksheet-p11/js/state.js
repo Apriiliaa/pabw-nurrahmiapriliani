@@ -1,5 +1,8 @@
 import { render } from './dom.js';
 
+const KUNCI = 'pabw-p11';
+const VERSI = 2;
+
 export const state = {
     dataKomik: [],   
     filterAktif: 'semua',
@@ -21,5 +24,38 @@ export function tambahFavorit(id) {
 
     state.favorit = [...state.favorit, id];
 
+    simpan(state);
+
+    render(state);
+}
+
+export function simpan(state) {
+    const isi = {
+        versi: VERSI,
+        filterAktif: state.filterAktif,
+        favorit:state.favorit
+    };
+    localStorage.setItem(KUNCI, JSON.stringify(isi));
+}
+
+export function muat() {
+    try {
+        return JSON.parse(localStorage.getItem(KUNCI));
+    } catch {
+        return null;
+    }
+}
+
+export function pulihkan(isi) {
+    if (isi) {
+        state.filterAktif = isi.filterAktif || 'semua';
+        state.favorit = isi.favorit || [];
+    }
+}
+
+export function aturUlang() {
+    localStorage.removeItem(KUNCI);
+    state.filterAktif = 'semua';
+    state.favorit = [];
     render(state);
 }
