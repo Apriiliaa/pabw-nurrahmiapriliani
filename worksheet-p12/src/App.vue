@@ -1,15 +1,32 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { profil } from './data.js';
+import { state, simpan, muat, pulihkan, isiKomik } from './state.js';
+import { ambilDataKomik } from './api.js';
 import KepalaProfil from './components/KepalaProfil.vue';
+import DaftarKomik from './components/DaftarKomik.vue'; 
 
 const isTemaBiru = ref(false);
 const isTemaPink = ref(false);
 
 function toggleTema() {
   isTemaBiru.value = !isTemaBiru.value;
-  document.documentElement.classList.toggle('tema-gelap-aktif', isTemaGelap.value); 
+  document.documentElement.classList.toggle('tema-gelap-aktif', isTemaBiru.value); 
 }
+
+onMounted(async () => {
+  pulihkan(muat());
+
+  try {
+    isiKomik(await ambilDataKomik());
+  } catch (galat) {
+    state.galat = 'Data gagal dimuat. Periksa koneksi, lalu muat ulang.';
+  } finally {
+    state.memuat = false;
+  }
+});
+
+watch(state, (nilai) => simpan(nilai), { deep: true });
 </script>
 
 <template>
@@ -19,7 +36,7 @@ function toggleTema() {
   <div class="page">
     <header>
       <div class="tombol-tema-wrapper">
-        <!-- Tema Gelap -->
+        <!-- Tema Biru -->
         <input type="checkbox" id="tema" class="pengalih-tema" v-model="isTemaBiru">
         <label for="tema" class="tombol-tema">{{ isTemaBiru ? 'Tema gelap' : 'Tema biru' }}</label>
         
@@ -29,7 +46,6 @@ function toggleTema() {
       </div>
 
       <KepalaProfil :profil="profil" />
-     
    </header>
 
  <main class="isi">
@@ -40,38 +56,16 @@ function toggleTema() {
         
    <section id="koleksi">
         <h2>Koleksi Komik Favorit</h2>
-      <div class="tabel-wrapper">
-        <table>
-          <caption>Daftar Koleksi Komik Saya</caption>
-          <thead>
-            <tr>
-              <th scope="col">Judul</th>
-              <th scope="col">Pengarang</th>
-              <th scope="col">Genre</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">I Wanna Be U</th>
-              <td>Sam</td>
-              <td>Fantasi, Kerajaan</td>
-              <td>On Going</td>
-            </tr>
-            <!-- Tambahkan baris tabel lainnya jika perlu, atau biarkan kosong untuk diisi Lembar D -->
-          </tbody>
-        </table>
-      </div> 
 
-      <div id="filter">
-          <button class="filter-btn aktif" data-kategori="semua">Semua</button>
-          <button class="filter-btn" data-kategori="On Going">On Going</button>
-          <button class="filter-btn" data-kategori="Hiatus">Hiatus</button>
-          <button class="filter-btn" data-kategori="End">End</button>
-      </div>
+        <div id="filter">
+            <button class="filter-btn" :class="{ aktif: state.filterAktif === 'semua' }" @click="state.filterAktif = 'semua'">Semua</button>
+            <button class="filter-btn" :class="{ aktif: state.filterAktif === 'On Going' }" @click="state.filterAktif = 'On Going'">On Going</button>
+            <button class="filter-btn" :class="{ aktif: state.filterAktif === 'Hiatus' }" @click="state.filterAktif = 'Hiatus'">Hiatus</button>
+            <button class="filter-btn" :class="{ aktif: state.filterAktif === 'End' }" @click="state.filterAktif = 'End'">End</button>
+        </div>
 
-      <p id="pesan-kosong" style="display: none;">Belum ada komik untuk kategori ini.</p>
-      <div class="galeri"></div>
+        <DaftarKomik />
+
    </section>
 
    <section id="tambah">
@@ -104,7 +98,7 @@ function toggleTema() {
 
    <section id="tentang-saya">
           <h2>Tentang Saya</h2>
-          <p>Hai, saya Aprilia. Saya suka membaca komik terutama komik bergenre fantasi, thriller, aksi, kerajaan, komedi, dan romansa. Halaman web ini dibuat untuk mendokumentasikan berbagai komik favorit yang saya baca.</p>
+          <p>Hai, saya Aprilia. Suka membaca komik terutama komik bergenre fantasi, thriller, aksi, kerajaan, komedi, dan romansa. Halaman web ini dibuat untuk mendokumentasikan berbagai komik favorit yang saya baca.</p>
    </section>
    </main>
 
